@@ -11,6 +11,7 @@ public class Android implements DriverStrategy{
 
 	public AppiumDriver<MobileElement> setStrategy() throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
+		//ATRIBUT ANDROID DEVICE
 		capabilities.setCapability("deviceName", "Pixel_2_API_27");
 		capabilities.setCapability("uuid", "emulator-5554");
 		capabilities.setCapability("platformName", "Android");
@@ -21,6 +22,7 @@ public class Android implements DriverStrategy{
 //		capabilities.setCapability("appActivity", "com.android.contacts.activities.ContactsFrontDoor");
 //		capabilities.setCapability("appActivity", "com.android.contacts.activities.LicenseFrontDoor");
 		
+		//LOCAL SERVER APPIUM
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		
 		AppiumDriver<MobileElement> driver = new AppiumDriver<MobileElement>(url, capabilities);

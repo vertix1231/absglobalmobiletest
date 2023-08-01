@@ -4,9 +4,9 @@ Feature: Contacts App
   	When Click search button
   	Then input contact name <Name> in search contact button
   	When click contact that want to be selected one of the research results
-  	Then Directing to Next Page Detail Selected Contact Information
+  	Then Directing to Next Page Detail Selected Contact Information with <Name>
   	
   	
   	Examples: 
       |Name|
-      |irsyad GW|
+      |irsyad Gw|

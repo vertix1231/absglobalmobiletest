@@ -39,7 +39,8 @@ public class StepDefinition  {
 //	private static WebDriver driverWeb;
 	private ExtentTest extentTest;
 	static ExtentReports extentReports = new ExtentReports();
-	static ExtentSparkReporter htmlreporter = new ExtentSparkReporter("src/test/resources/stepdef_report_mobiletest_appium_teskerja_stepdef.html");
+//	static ExtentSparkReporter htmlreporter = new ExtentSparkReporter("src/test/resources/stepdef_report_mobiletest_appium_teskerja_stepdef.html");
+	static ExtentSparkReporter htmlreporter = new ExtentSparkReporter("src/test/resources/stepdef_report_mobiletest_appium_teskerja_stepdeffix_pass.html");
 	private static AppiumDriver<MobileElement> driver;
 	private static FungsiApp fungsiApp;
 
@@ -65,16 +66,17 @@ public class StepDefinition  {
 
 	@Given("^Go to Contacts App")
 	public void workZero() throws IOException {
-		System.out.println("Go to " + fungsiApp.getmainContactTitle()+" App pass");
-		extentTest.log(Status.PASS, "Go to " + fungsiApp.getmainContactTitle()+" App");
-//		if (fungsiApp.getmainContactTitle().contains(configurationProperties.getMainContactTitle())) {
-//			System.out.println("Go to " + fungsiApp.getmainContactTitle()+" App pass");
-//			extentTest.log(Status.PASS, "Go to " + fungsiApp.getmainContactTitle()+" App");
-//		} else {
-//			System.out.println("Go to " + fungsiApp.getmainContactTitle()+" App fail");
-//			extentTest.fail("Go to " + fungsiApp.getmainContactTitle()+" App",
-//					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
-//		}
+//		System.out.println("Go to " + fungsiApp.getmainContactTitle()+" App pass");
+//		extentTest.log(Status.PASS, "Go to " + fungsiApp.getmainContactTitle()+" App");
+//		extentTest.log(Status.PASS, "Go to Contacts App");
+		if (fungsiApp.getmainContactTitle().contains(configurationProperties.getMainContactTitle())) {
+			System.out.println("Go to " + fungsiApp.getmainContactTitle()+" App pass");
+			extentTest.log(Status.PASS, "Go to " + fungsiApp.getmainContactTitle()+" App");
+		} else {
+			System.out.println("Go to " + fungsiApp.getmainContactTitle()+" App fail");
+			extentTest.fail("Go to " + fungsiApp.getmainContactTitle()+" App",
+					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
+		}
 
 	}
 
@@ -89,15 +91,14 @@ public class StepDefinition  {
 	@Then("^input contact name (.*) in search contact button")
 	public void workTwo(String name) throws IOException {
 		fungsiApp.formInputNameContact(name);
-		extentTest.log(Status.PASS, "input contact name "+name+" in search contact button");
-//		if (fungsiApp.getselectedContactTitleTitle().contains(configurationProperties.getSelectedContactTitleTitle())) {
-//			System.out.println("input contact name "+name+" in search contact button pass");
-//			extentTest.log(Status.PASS, "input contact name "+name+" in search contact button");
-//		} else {
-//			System.out.println("input contact name "+name+" in search contact button fail");
-//			extentTest.fail("input contact name "+name+" in search contact button",
-//					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
-//		}
+		if (fungsiApp.getselectedContactTitleTitle().contains(configurationProperties.getSelectedContactTitleTitle())) {
+			System.out.println("input contact name "+name+" in search contact button pass");
+			extentTest.log(Status.PASS, "input contact name "+name+" in search contact button");
+		} else {
+			System.out.println("input contact name "+name+" in search contact button fail");
+			extentTest.fail("input contact name "+name+" in search contact button",
+					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
+		}
 
 	}
 	@When("^click contact that want to be selected one of the research results")
@@ -107,20 +108,18 @@ public class StepDefinition  {
 		extentTest.log(Status.PASS, "click contact that want to be selected one of the research results");
 	}
 
-	@Then("^Directing to Next Page Detail Selected Contact Information")
-	public void workThree() throws IOException {
-		System.out.println("Directing to Next Page Detail Selected Contact Information pass");
-		extentTest.log(Status.PASS, "Directing to Next Page Detail Selected Contact Information");
-		extentTest.fail("Click admin menu",MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
-//		adminPage.goToAdmin();
-//		if (adminPage.getTxtAdmiTabHighlight().contains(configurationProperties.getAdmintabadminmenu())) {
-//			System.out.println("scenario Click admin menu pass");
-//			extentTest.log(Status.PASS, "Click admin menu");
-//		} else {
-//			System.out.println("scenario Click admin menu fail");
-//			extentTest.fail("Click admin menu",
-//					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
-//		}
+	@Then("^Directing to Next Page Detail Selected Contact Information with (.*)")
+	public void workThree(String name) throws IOException {
+		if (fungsiApp.getdetailnumberselectedContactTitle().contains(configurationProperties.getDetailnumberselectedContactTitle())) {
+			System.out.println(fungsiApp.getdetailnumberselectedContactTitle());
+			System.out.println("Directing to Next Page Detail Selected Contact Information with "+name+" pass");
+			extentTest.log(Status.PASS, "Directing to Next Page Detail Selected Contact Information with "+name);
+		} else {
+			System.out.println(fungsiApp.getdetailnumberselectedContactTitle());
+			System.out.println("Directing to Next Page Detail Selected Contact Information with "+name+" fail");
+			extentTest.fail("Directing to Next Page Detail Selected Contact Information with "+name,
+					MediaEntityBuilder.createScreenCaptureFromPath(failcaptureScreen()).build());
+		}
 	}
 
 	@After
@@ -128,7 +127,7 @@ public class StepDefinition  {
 		extentReports.flush();
 	}
 
-//CAPTURE PHOTO TESTING
+//CAPTURE FAIL PHOTO TESTING
 	public String failcaptureScreen() throws IOException {
 		TakesScreenshot screen = (TakesScreenshot) driver;
 		File src = screen.getScreenshotAs(OutputType.FILE);

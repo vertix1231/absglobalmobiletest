@@ -1,8 +1,7 @@
 package com.test.kerja.sqa.absglobalmobileappium.utils;
 
 public enum ScenarioTestCases {
-	SCT1("Scenario Input Username and Password Login to main web"),
-	SCT2("Scenario Add data from admin menu");
+	SCT1("Scenario Find Detail Selected Contact from Various Contact List ");
 	
 	private String scenarioTestName;
 

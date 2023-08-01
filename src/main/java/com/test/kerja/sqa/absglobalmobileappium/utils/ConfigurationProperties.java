@@ -13,4 +13,6 @@ public class ConfigurationProperties {
 	private String mainContactTitle;
 	@Value("${selectedContactTitleTitle}")
 	private String selectedContactTitleTitle;
+	@Value("${detailnumberselectedContactTitle}")
+	private String detailnumberselectedContactTitle;
 }

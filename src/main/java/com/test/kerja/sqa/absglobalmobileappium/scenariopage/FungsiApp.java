@@ -18,17 +18,26 @@ public class FungsiApp {
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 
+	//MAIN FUNCTION
 	@AndroidFindBy(id = "com.android.contacts:id/menu_search")
 	private MobileElement btnSrc;
 	@AndroidFindBy(id = "com.android.contacts:id/search_view")
 	private MobileElement formInputName;
 	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.ListView/android.view.ViewGroup")
 	private MobileElement selectContact;
-	@AndroidFindBy(xpath = "t.LinearLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.TextView")
+	//GETTEXT
+	@AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.support.v4.widget.DrawerLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.TextView")
 	private MobileElement mainContactTitle;
 	@AndroidFindBy(xpath = "//android.widget.TextView[@content-desc=\"Irsyad Gw\"]")
 	private MobileElement selectedContactTitle;
+	@AndroidFindBy(xpath = "//android.widget.RelativeLayout[@content-desc=\"Call Mobile 0882-1261-5844\"]/android.widget.TextView[1]")
+	private MobileElement detailnumberselectedContactTitle;
 	
+	
+	public String getdetailnumberselectedContactTitle() {
+		return detailnumberselectedContactTitle.getText();
+	}
+
 	public String getselectedContactTitleTitle() {
 		return selectedContactTitle.getText();
 	}
